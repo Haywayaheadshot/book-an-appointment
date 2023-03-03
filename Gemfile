@@ -27,6 +27,8 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+gem 'rack-cors'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -72,3 +74,8 @@ group :test do
 end
 
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+# for authentication
+gem 'devise'
+
+gem 'letter_opener'
