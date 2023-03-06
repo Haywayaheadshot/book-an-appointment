@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     root "devise/sessions#new"
 
-    # API endpoints for sign up
+    # API endpoint for sign up
     post "/api/signup", to: "api/registrations#create"
+
+    # API endpoint for log in
+    post "/api/login", to: "api/sessions#new"
   end
 
 end
