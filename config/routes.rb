@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :doctors_reservations
+  resources :reservations
   # namespace :api do
   #   get 'doctors/index'
   # end
 
   namespace :api do
+    post "reservations", to: "reservations#create"
     resources :doctors, only: [:index]
     resources :users, only: [:index]
   end
