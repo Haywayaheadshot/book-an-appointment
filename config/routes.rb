@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :doctors, only: [:index]
+    resources :users, only: [:index]
   end
   # resources :doctors
   devise_for :users
