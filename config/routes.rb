@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :doctors
+  # namespace :api do
+  #   get 'doctors/index'
+  # end
+
+  namespace :api do
+    resources :doctors, only: [:index]
+  end
+  # resources :doctors
   devise_for :users
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

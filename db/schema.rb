@@ -45,11 +45,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_003039) do
   create_table "doctors", force: :cascade do |t|
     t.string "name"
     t.string "specialty"
-    t.string "years_of_experience"
+    t.integer "years_of_experience"
     t.text "bio"
     t.integer "age"
-    t.text "achievements"
+    t.text "qualifications"
     t.string "location_of_work"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
