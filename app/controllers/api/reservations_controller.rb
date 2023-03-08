@@ -4,7 +4,7 @@ class Api::ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     doctor = Doctor.find_by(name: params[:doctor_name])
-    @doctors_reservation = DoctorsReservation.new(doctor: doctor, reservation: @reservation)
+    @doctors_reservation = DoctorsReservation.new(doctor:, reservation: @reservation)
 
     # Find the user by username and assign its id to user_id
     user = User.find_by(username: params[:username])
@@ -26,7 +26,7 @@ class Api::ReservationsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user
       reservations = user.reservations
-      render json: { reservations: reservations }
+      render json: { reservations: }
     else
       render json: { success: false, errors: 'User not found' }
     end

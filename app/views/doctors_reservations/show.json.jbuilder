@@ -1,1 +1,1 @@
-json.partial! "doctors_reservations/doctors_reservation", doctors_reservation: @doctors_reservation
+json.partial! 'doctors_reservations/doctors_reservation', doctors_reservation: @doctors_reservation

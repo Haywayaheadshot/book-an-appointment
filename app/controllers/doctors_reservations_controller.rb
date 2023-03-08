@@ -1,5 +1,5 @@
 class DoctorsReservationsController < ApplicationController
-  before_action :set_doctors_reservation, only: %i[ show edit update destroy ]
+  before_action :set_doctors_reservation, only: %i[show edit update destroy]
 
   # GET /doctors_reservations or /doctors_reservations.json
   def index
@@ -7,8 +7,7 @@ class DoctorsReservationsController < ApplicationController
   end
 
   # GET /doctors_reservations/1 or /doctors_reservations/1.json
-  def show
-  end
+  def show; end
 
   # GET /doctors_reservations/new
   def new
@@ -16,8 +15,7 @@ class DoctorsReservationsController < ApplicationController
   end
 
   # GET /doctors_reservations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /doctors_reservations or /doctors_reservations.json
   def create
@@ -25,7 +23,10 @@ class DoctorsReservationsController < ApplicationController
 
     respond_to do |format|
       if @doctors_reservation.save
-        format.html { redirect_to doctors_reservation_url(@doctors_reservation), notice: "Doctors reservation was successfully created." }
+        format.html do
+          redirect_to doctors_reservation_url(@doctors_reservation),
+                      notice: 'Doctors reservation was successfully created.'
+        end
         format.json { render :show, status: :created, location: @doctors_reservation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,10 @@ class DoctorsReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @doctors_reservation.update(doctors_reservation_params)
-        format.html { redirect_to doctors_reservation_url(@doctors_reservation), notice: "Doctors reservation was successfully updated." }
+        format.html do
+          redirect_to doctors_reservation_url(@doctors_reservation),
+                      notice: 'Doctors reservation was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @doctors_reservation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +56,20 @@ class DoctorsReservationsController < ApplicationController
     @doctors_reservation.destroy
 
     respond_to do |format|
-      format.html { redirect_to doctors_reservations_url, notice: "Doctors reservation was successfully destroyed." }
+      format.html { redirect_to doctors_reservations_url, notice: 'Doctors reservation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_doctors_reservation
-      @doctors_reservation = DoctorsReservation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def doctors_reservation_params
-      params.fetch(:doctors_reservation, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_doctors_reservation
+    @doctors_reservation = DoctorsReservation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def doctors_reservation_params
+    params.fetch(:doctors_reservation, {})
+  end
 end
