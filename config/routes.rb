@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do
-    post "reservations", to: "reservations#create"
+    resources :reservations, only: [:create, :index]
     resources :doctors, only: [:index]
     resources :users, only: [:index]
   end
