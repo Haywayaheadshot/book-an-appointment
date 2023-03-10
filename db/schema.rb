@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_124914) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_210427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_124914) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.string "specialty"
+    t.integer "years_of_experience"
+    t.text "bio"
+    t.integer "age"
+    t.text "qualifications"
+    t.string "location_of_work"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "doctors_reservations", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_doctors_reservations_on_doctor_id"
+    t.index ["reservation_id"], name: "index_doctors_reservations_on_reservation_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "title"
+    t.date "reservation_date"
+    t.integer "phone_number"
+    t.text "purpose"
+    t.string "location"
+    t.string "doctor_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "photo"
@@ -65,4 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_124914) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "doctors_reservations", "doctors"
+  add_foreign_key "doctors_reservations", "reservations"
+  add_foreign_key "reservations", "users"
 end

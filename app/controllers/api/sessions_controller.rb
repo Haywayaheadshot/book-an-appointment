@@ -4,7 +4,7 @@ class Api::SessionsController < Devise::SessionsController
     if user&.valid_password?(sign_in_params[:password])
       # if user&.authenticate(sign_in_params[:password])
       # sign in the user and redirect to the desired page
-      render json: { message: 'Logged in successfully!' }
+      render json: { message: 'success' }
     else
       # handle sign-in failure
       render json: { error: 'Wrong username or password' }, status: :unauthorized
