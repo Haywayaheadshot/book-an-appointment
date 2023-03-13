@@ -24,16 +24,12 @@ default: &default
 development:
   <<: *default
   database: book_an_appointment_development
-  username: postgres
-  password: postgresswaya
-  # username: postgres
-  # password: 1234
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: book_an_appointment
+  #username: Payment_App
 
   # The password associated with the postgres role (username).
   #password:
@@ -62,10 +58,6 @@ development:
 test:
   <<: *default
   database: book_an_appointment_test
-  username: postgres
-  password: postgresswaya
-  # username: postgres
-  # password: 1234
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,7 +82,5 @@ test:
 production:
   <<: *default
   database: book_an_appointment_production
-  username: postgres
-  password: postgresswaya
-  # username: postgres
-  # password: 1234
+  username: book_an_appointment
+  password: <%= ENV["PAYMENT_APP_DATABASE_PASSWORD"] %>
