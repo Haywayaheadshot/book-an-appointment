@@ -2,8 +2,6 @@ class Api::SessionsController < Devise::SessionsController
   def new
     user = User.find_by(username: sign_in_params[:username])
     if user&.valid_password?(sign_in_params[:password])
-      # if user&.authenticate(sign_in_params[:password])
-      # sign in the user and redirect to the desired page
       render json: { message: 'success' }
     else
       # handle sign-in failure
