@@ -14,13 +14,15 @@ RSpec.describe Api::ReservationsController, type: :controller do
     context 'when the reservation is valid' do
       before do
         @user = User.create(username: 'testuser', email: 'test@example.com', password: 'password')
-        @doctor = Doctor.create(name: 'Doctor Abubakar Ummar', photo: 'images/doctor-abu.jpg', specialty: 'Radiology and Imaging', age: 40, location_of_work: 'Ghana',
+        @doctor = Doctor.create(name: 'Doctor Abubakar Ummar', photo: 'images/doctor-abu.jpg',
+                                specialty: 'Radiology and Imaging', age: 40, location_of_work: 'Ghana',
                                 years_of_experience: 18, qualifications: ' MBBS, MD (Radio-Diagnosis)',
-                                bio: "Dr. Abubakar Ummar earned his MBBS in 2000 from V.S.S. Medical College, Accra, Ghana and his M.D. in Radio-Diagnosis in 2013 from S.C.B. Medical College, Cuttack, Accra, Ghana.
-He has worked in various hospitals in Ghana as a Consultant Radiologist and has past experience in the U.A.E and moreover in RAK Hospital as a Specialist Radiologist.
-He efficiently manages the diagnosis of human body using digital X-ray, Mammography, Ultrasound, Doppler, CT Scan, PET CT and MRI studies.")
+                                bio: "Dr. Abubakar Ummar earned his MBBS in 2000 from V.S.S. Medical College,
+                                Accra, Ghana and his M.D.
+                                in Radio-Diagnosis in 2013 from S.C.B. Medical College, Cuttack, Accra, Ghana.")
         @reservation = Reservation.create(title: 'Test Reservation', reservation_date: '2033-10-20',
-                                          phone_number: '45678900', purpose: 'Checkup', location: 'Test Clinic', doctor_name: 'Doctor Abubakar Ummar', user_id: @user.id)
+                                          phone_number: '45678900', purpose: 'Checkup', location: 'Test Clinic',
+                                          doctor_name: 'Doctor Abubakar Ummar', user_id: @user.id)
         @doctors_reservation = DoctorsReservation.create(doctor_id: @doctor.id, reservation_id: @reservation.id)
       end
 
