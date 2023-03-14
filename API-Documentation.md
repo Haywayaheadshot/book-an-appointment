@@ -130,7 +130,7 @@ Content-Type: application/json
 {
   "success": true,
   "reservation_id
-
+}
 
 #### Get All Reservations for User
 Endpoint: /api/reservations
