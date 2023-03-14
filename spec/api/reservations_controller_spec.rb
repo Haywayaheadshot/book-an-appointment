@@ -4,10 +4,6 @@ require 'factory_bot_rails'
 require 'capybara'
 require 'selenium-webdriver'
 
-# RSpec.configure do |config|
-#   config.include FactoryBot::Syntax::Methods
-#   # ...
-# end
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
@@ -36,17 +32,19 @@ He efficiently manages the diagnosis of human body using digital X-ray, Mammogra
         expect(DoctorsReservation.count).to eq(1)
       end
 
-        it "associates the reservation with the correct user" do
-          expect(Reservation.last.user.username).to eq("testuser")
-        end
+      it 'associates the reservation with the correct user' do
+        expect(Reservation.last.user.username).to eq('testuser')
+      end
     end
 
-    context "when the reservation is invalid" do
+    context 'when the reservation is invalid' do
       before do
-        post :create, params: { title: "", reservation_date: Time.now, phone_number: "123-456-7890", purpose: "Checkup", location: "Test Clinic", doctor_name: "Dr. Smith", username: "testuser" }
+        post :create,
+             params: { title: '', reservation_date: Time.now, phone_number: '123-456-7890', purpose: 'Checkup',
+                       location: 'Test Clinic', doctor_name: 'Dr. Smith', username: 'testuser' }
       end
 
-      it "does not create a new reservation" do
+      it 'does not create a new reservation' do
         expect(Reservation.count).to eq(0)
       end
 
