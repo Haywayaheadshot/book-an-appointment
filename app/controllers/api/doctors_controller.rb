@@ -13,13 +13,13 @@ class Api::DoctorsController < ApplicationController
         # @doctors_reservations.destroy # deletes all reservations of the doctor
         @doctor.destroy
       end
-      render json: { message: "Doctor deleted successfully" }, status: :ok
+      render json: { message: 'Doctor deleted successfully' }, status: :ok
     else
-      render json: { error: "Doctor not found" }, status: :not_found
+      render json: { error: 'Doctor not found' }, status: :not_found
     end
   end
 
-  def create 
+  def create
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
@@ -33,5 +33,5 @@ class Api::DoctorsController < ApplicationController
 
   def doctor_params
     params.permit(:name, :specialty, :years_of_experience, :bio, :age, :qualifications, :location_of_work, :photo)
-  end  
+  end
 end
