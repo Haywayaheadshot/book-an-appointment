@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :reservations, only: [:create, :index]
-    resources :doctors, only: [:index]
+    resources :doctors, only: [:index, :show, :create, :update, :destroy]
     resources :users, only: [:index]
   end
 
@@ -20,5 +20,4 @@ Rails.application.routes.draw do
     # API endpoint for log in
     post "/api/login", to: "api/sessions#new"
   end
-
 end
