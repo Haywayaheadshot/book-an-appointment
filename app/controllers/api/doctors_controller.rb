@@ -12,7 +12,7 @@ class Api::DoctorsController < ApplicationController
         @doctors_reservations = DoctorsReservation.where(doctor_id: @doctor.id)
         @reservations = Reservation.where(id: @doctors_reservations.map(&:reservation_id))
         @reservations.destroy_all # deletes all reservations of the doctor
-        @doctors_reservations.destroy_all # deletes all records linking the doctor and reservations 
+        @doctors_reservations.destroy_all # deletes all records linking the doctor and reservations
         @doctor.destroy
       end
       render json: { message: 'Doctor deleted successfully' }, status: :ok
