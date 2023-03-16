@@ -70,10 +70,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_210427) do
     t.integer "phone_number"
     t.text "purpose"
     t.string "location"
-    t.string "doctor_name"
     t.bigint "user_id"
+    t.bigint "doctor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_reservations_on_doctor_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -102,5 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_210427) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "doctors_reservations", "doctors"
   add_foreign_key "doctors_reservations", "reservations"
+  add_foreign_key "reservations", "doctors"
   add_foreign_key "reservations", "users"
 end
