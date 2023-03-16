@@ -4,12 +4,12 @@ class Api::ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     doctor = Doctor.find_by(id: params[:doctor_id])
-    @doctors_reservation = DoctorsReservation.new(doctor: doctor, reservation: @reservation)
+    @doctors_reservation = DoctorsReservation.new(doctor:, reservation: @reservation)
 
     # Find the user by username and assign its id to user_id
     user = User.find_by(username: params[:userName])
     @reservation.user_id = user.id if user
-    
+
     if @reservation.save && @doctors_reservation.save
       render json: { success: true, reservation_id: @reservation.id }
     else
@@ -27,7 +27,7 @@ class Api::ReservationsController < ApplicationController
       reservations.each do |reservation|
         doctors_reservation = DoctorsReservation.where(reservation_id: reservation.id).first
         doctor_name = doctors_reservation.doctor.name if doctors_reservation.present?
-        reservation_list << { reservation: reservation, doctor_name: doctor_name }
+        reservation_list << { reservation:, doctor_name: }
       end
       render json: { reservations: reservation_list }
     else
