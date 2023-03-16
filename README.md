@@ -57,9 +57,8 @@
 
 <details>
 <summary>API Documentation</summary>
-  <ul>
-    <li>[API-Documentation](./API-Documentation.md)</li>
-  </ul>
+
+  [API-Documentation](./API-Documentation.md)
 </details>
 
 <!-- Features -->
