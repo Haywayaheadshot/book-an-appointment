@@ -9,11 +9,11 @@ Error Responses: All endpoints may return a JSON response with success set to fa
 
 ### Authentication Endpoints
 #### Log In
-Endpoint: /api/login
-Method: POST
-Request Body: username, password
-Response: { message: 'success' } on successful authentication
-Possible Error Responses: { error: 'Wrong username or password' }
+- Endpoint: /api/login
+- Method: POST
+- Request Body: username, password
+- Response: { message: 'success' } on successful authentication
+- Possible Error Responses: { error: 'Wrong username or password' }
 #### Example
 POST /api/login HTTP/1.1
 Host: example.com
