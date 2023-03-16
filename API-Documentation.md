@@ -148,7 +148,7 @@ Error Responses: All endpoints may return a JSON response with success set to fa
 ```json
 {
   "success": true,
-  "reservation_id
+  "reservation_id"
 }
 ```
 
